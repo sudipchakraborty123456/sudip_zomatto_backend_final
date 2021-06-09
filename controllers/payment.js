@@ -9,6 +9,7 @@ const { v4: uuidv4 } = require('uuid');
 const ejs = require('ejs');
 // Need the external paytm library to authenticate the payments
 const PaytmChecksum = require('./paytmchecksum.js');
+console.log("paymCallBack:"+PaytmChecksum)
 // const {LocalStorage} = require('node-localstorage') ;
 // var  localStorage = new LocalStorage('./scratch');
 // import('./store.js');
