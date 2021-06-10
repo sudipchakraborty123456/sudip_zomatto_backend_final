@@ -24,19 +24,24 @@ exports.singUp = (req, res) => {
     user.find({
         email: email
     }).then(data => {
+        //console.log(`${data}+${data.length}`);
+       // console.log("email matched")
         if (data.length > 0) {
             res.json({ "data": "Use another email" })
             
+        }else{
+            //console.log("email not matched")
+            userObj.save().then(data => {
+                res.json({
+                    message: "user regesterd successfully",
+                    user: data
+                })
+            }).catch(err => {
+                res.json({ error: err });
+            });
         }
-    }).catch(err => {
-        userObj.save().then(data => {
-            res.json({
-                message: "user regesterd successfully",
-                user: data
-            })
-        }).catch(err => {
-            res.json({ error: err });
-        });
+    }).catch((error) => {
+        console.log(error)
     })
     //   b.      call the save method, insert data into MongoDB
 };
