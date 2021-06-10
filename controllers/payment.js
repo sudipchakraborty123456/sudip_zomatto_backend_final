@@ -107,6 +107,10 @@ class PaytmChecksum {
 	}
 }
 PaytmChecksum.iv = '@@@@&&&&####$$$$';
+
+
+
+
 exports.payment = (req, res) => {
    
     const { 
@@ -135,7 +139,7 @@ exports.payment = (req, res) => {
     params['TXN_AMOUNT'] = amount.toString();
     params['EMAIL'] = email;
     params['MOBILE_NO'] = mobileNo.toString();
-    params['CALLBACK_URL'] = 'http://localhost:5420/paymentCallback';
+    params['CALLBACK_URL'] = 'https://sudip-zomat-back-end.herokuapp.com/paymentCallback';
 
 
 
@@ -143,7 +147,7 @@ exports.payment = (req, res) => {
     req.body.orderDetails.orderId = (params['ORDER_ID']);
      axios({
             method: "POST",
-            url: `http://localhost:5420/placeOrder`,
+            url: `https://sudip-zomat-back-end.herokuapp.com/placeOrder`,
             //headers : {"Content-Type" : "applicaton/json"},
             data: orderDetails
         }).then((data)=>{
