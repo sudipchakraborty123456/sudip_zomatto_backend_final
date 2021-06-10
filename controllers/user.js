@@ -21,7 +21,19 @@ exports.singUp =(req,res) => {
         }
     );
 
-
+    user.find({
+        
+        email : email
+    }).then( data => {
+        if(data.length>0){
+            res.json({"data":"Use another email"})
+        return;
+        }
+       
+        
+    }).catch(err => { 
+        res.json({ Error :err});
+    })
     //   b.      call the save method, insert data into MongoDB
 
         userObj.save().then(data => {
