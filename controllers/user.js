@@ -25,11 +25,11 @@ exports.singUp = (req, res) => {
         email: email
     }).then(data => {
         //console.log(`${data}+${data.length}`);
-       // console.log("email matched")
+        // console.log("email matched")
         if (data.length > 0) {
             res.json({ "data": "Use another email" })
-            
-        }else{
+
+        } else {
             //console.log("email not matched")
             userObj.save().then(data => {
                 res.json({
@@ -51,20 +51,35 @@ exports.logIn = (req, res) => {
     const { email, password } = bodyParser;
     // console.log(email,password);
     user.find({
-        email: email,
-        password: password
+        email: email
     }).then(data => {
+        //console.log(`${data}+${data.length}`);
+        // console.log("email matched")
         if (data.length > 0) {
-            res.json({
-                message: 'User login successfully',
-                user: data
-            });
-        }
-        else {
-            res.send("UserName or Password is wrong!");
-        }
+            
+            user.find({
+                email: email,
+                password: password
+            }).then(data => {
+                if (data.length > 0) {
+                    res.json({
+                        message: 'User login successfully',
+                        user: data
+                    });
+                }
+                else {
+                    res.send("UserName or Password is wrong!");
+                }
 
-    }).catch(err => {
-        res.json({ Error: err });
+            }).catch(err => {
+                res.json({ Error: err });
+            })
+        
+        } else {
+            res.json({ "data": "This email is not exist" })
+        }
+    }).catch((error) => {
+        console.log(error)
     })
+
 };
