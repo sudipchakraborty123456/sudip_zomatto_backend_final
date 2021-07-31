@@ -76,7 +76,8 @@ exports.filterRestaurant = (req, res) => {
         }
         temp = pagein(data, pageSize, page);
         res.json({
-            message: "Filter succesfull", "Number of restaurants found :": temp.length,
+            message: "Filter succesfull", 
+            "Number of restaurants found :": temp.length,
             restaurant: temp,
             totalResults: data.length,
             pageNo: pageNo,
