@@ -23,7 +23,7 @@ app.use(route);
 //mongodb+srv://root:NUT2022655@cluster0.tjcqt.mongodb.net/Zomato?retryWrites=true&w=majority
 
 mongoose.connect(
-    'mongodb+srv://root:8927179792@cluster0.tjcqt.mongodb.net/Zomato?retryWrites=true&w=majority'
+    'mongodb+srv://root:7lUe7W4eV0R1hVzV@cluster0.tjcqt.mongodb.net/Zomato?retryWrites=true&w=majority'
     ,
       {
         useNewUrlParser:  true,   
